@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "binary_trees.h"
 
 /**
@@ -24,14 +27,14 @@ size_t binary_tree_size(const binary_tree_t *tree)
 }
 
 /**
- * insert_ordered - Inserts node level ordered
+ * insert_or - Inserts node level ordered
  * @tree: Type binary_tree pointer of the parent node
  * @value: Type int value of value inserted into node
  * @idx: Type int index of the node
  * @n_leaf: Type int node array position (parent formula: idx / 2)
  * Return: Node inserted
  */
-heap_t *insert_ordered(binary_tree_t *tree, int value, int idx, int n_leaf)
+heap_t *insert_or(binary_tree_t *tree, int value, int idx, int n_leaf)
 {
 	heap_t *node;
 
@@ -52,14 +55,14 @@ heap_t *insert_ordered(binary_tree_t *tree, int value, int idx, int n_leaf)
 			return (tree->left);
 		}
 	}
-	node = insert_ordered(tree->left, value, 2 * idx + 1, n_leaf);
+	node = insert_or(tree->left, value, 2 * idx + 1, n_leaf);
 	if (node != 0)
 	{
 		return (node);
 	}
 	else
 	{
-		return (insert_ordered(tree->right, value, 2 * idx + 2, n_leaf));
+		return (insert_or(tree->right, value, 2 * idx + 2, n_leaf));
 	}
 }
 /**
@@ -78,7 +81,7 @@ heap_t *heap_insert(heap_t **root, int value)
 		*root = binary_tree_node(NULL, value);
 		return (*root);
 	}
-	node = insert_ordered(*root, value, 0, binary_tree_size(*root) + 1);
+	node = insert_or(*root, value, 0, binary_tree_size(*root) + 1);
 	while (node->parent && node->n > node->parent->n)
 	{
 		node->n = node->parent->n;
