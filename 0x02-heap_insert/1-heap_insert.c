@@ -34,9 +34,7 @@ heap_t *insert_or(binary_tree_t *tree, int value, int idx, int n_leaf)
 	heap_t *node;
 
 	if (tree == NULL)
-	{
 		return (NULL);
-	}
 	if (idx + 1 == n_leaf / 2)
 	{
 		if (n_leaf & 1)
@@ -52,14 +50,10 @@ heap_t *insert_or(binary_tree_t *tree, int value, int idx, int n_leaf)
 	}
 	node = insert_or(tree->left, value, 2 * idx + 1, n_leaf);
 	if (node != 0)
-	{
 		return (node);
-	}
-	else
-	{
-		return (insert_or(tree->right, value, 2 * idx + 2, n_leaf));
-	}
+	return (insert_or(tree->right, value, 2 * idx + 2, n_leaf));
 }
+
 /**
  * heap_insert - function that inserts a value into a Max Binary Heap
  *
