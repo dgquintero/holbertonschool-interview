@@ -4,7 +4,7 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_size - function that return the size of a tree
+ * binary_tree_size - returns the size of a tree
  * @tree: binary tree
  * Return: tree size
  */
@@ -22,11 +22,11 @@ size_t binary_tree_size(const binary_tree_t *tree)
 }
 
 /**
- * insert_or - Inserts node level ordered
+ * insert_or - Inserts ordered
  * @tree: Type binary_tree pointer of the parent node
  * @value: Type int value of value inserted into node
  * @idx: Type int index of the node
- * @n_leaf: Type int node array position (parent formula: idx / 2)
+ * @n_leaf: Type int node array position idx / 2
  * Return: Node inserted
  */
 heap_t *insert_or(binary_tree_t *tree, int value, int idx, int n_leaf)
