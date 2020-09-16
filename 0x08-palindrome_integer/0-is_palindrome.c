@@ -9,9 +9,7 @@
  */
 int is_palindrome(unsigned long n)
 {
-    int revers = 0, remainder, originaln;
-    if (n >= 0 && n <= 9)
-        return (1);
+    unsigned long revers = 0, remainder, originaln;
 
     originaln = n;
 
