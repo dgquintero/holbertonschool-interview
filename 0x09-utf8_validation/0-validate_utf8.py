@@ -1,23 +1,27 @@
 #!/usr/bin/python3
-"""validUTF8 Funn_bytesion"""
+"""validUTF8 Funnbytesion"""
 
 
 def validUTF8(data):
     """method that determines if a given data set
     represents a valid UTF-8 encoding"""
-    n_bytes = 0
+    nbytes = 0
+
+    m1 = 1 << 7
+    m2 = 1 << 6
+
     for i in data:
-        if n_bytes == 0:
-            if (i >> 5) == 0b110:
-                n_bytes = 1
-            elif (i >> 4) == 0b1110:
-                n_bytes = 2
-            elif (i >> 3) == 0b11110:
-                n_bytes = 3
-            elif (i >> 7):
+        m = 1 << 7
+        if nbytes == 0:
+            while m & i:
+                nbytes += 1
+                m = m >> 1
+            if nbytes == 0:
+                continue
+            if nbytes == 1 or nbytes > 4:
                 return False
         else:
-            if (i >> 6) != 0b10:
+            if not (i & m1 and not (i & m2)):
                 return False
-            n_bytes -= 1
-    return n_bytes == 0
+        nbytes -= 1
+    return nbytes == 0
