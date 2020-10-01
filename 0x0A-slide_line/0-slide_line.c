@@ -8,7 +8,7 @@
  *
  */
 
-int move_right(int *line, size_t size)
+int m_right(int *line, size_t size)
 {
 	int num1 = 0;
 	int num2 = 0;
