@@ -1,8 +1,9 @@
 #!/usr/bin/python3
+"""function canUnlockAll"""
 
 
 def canUnlockAll(boxes):
-    """ method that determines if all the boxes can be opened """
+    """method that determines if all the boxes can be opened"""
     open_boxes = [0]
     for i in open_boxes:
         for box in boxes[i]:
